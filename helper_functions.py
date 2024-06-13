@@ -6,7 +6,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import pandas as pd
 import re
-ADDRESS_XPATH=".//div[@data-testid='map-link-container']"
+ADDRESS_XPATH=".//a[@aria-label='Adres']"
 DESCRIPTION=".//div[@data-cy='adPageAdDescription']"
 PATTERN = r"ul\.\s+[A-ZĄĆĘŁŃÓŚŹŻa-ząćęłńóśźż]+\s*\d*"
 class Help:
@@ -17,7 +17,7 @@ class Help:
 
 
     def extract(self):
-        address1=self.wait.until(EC.presence_of_element_located((By.XPATH,ADDRESS_XPATH))).text
+        address1=self.driver.find_element(By.XPATH,ADDRESS_XPATH).text
         address2 = \
         re.findall(PATTERN, self.driver.find_element(By.XPATH, ".//div[@data-cy='adPageAdDescription']").text)[
             0] if re.findall(PATTERN, self.driver.find_element(By.XPATH,
