@@ -68,7 +68,7 @@ class Help:
             links.append(i.find_elements(By.TAG_NAME, 'a')[0])
         return links
     def save_data(self):
-        self.rentals.to_csv('Data/otodom.csv',index=False)
+        self.rentals.to_csv('otodom.csv',index=False)
 
     def next_page(self):
         page_list=self.driver.find_element(By.XPATH,".//ul[@data-testid='frontend.search.base-pagination.nexus-pagination']")
